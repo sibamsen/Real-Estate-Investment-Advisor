@@ -21,7 +21,7 @@ if zip_path.exists():
 else:
     # fallback to direct CSV if zip not present
     csv_path = Path(__file__).parent.parent / "cleaned_india_housing_prices.csv"
-    df = pd.read_csv(csv_path))
+    df = pd.read_csv(csv_path)
 
 st.set_page_config(page_title="Real Estate Investment Advisor (No-ML)", layout='wide')
 col_logo, col_title = st.columns([1, 14])
@@ -224,4 +224,5 @@ st.markdown("""
 """)
 
 # End of app
+
 
