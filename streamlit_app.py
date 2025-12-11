@@ -12,17 +12,16 @@ import zipfile
 from eda_utils import is_good_investment, forecast_price_fixed, forecast_price_by_location
 
 # --- Configuration / Load data ---
-zip_path = Path(__file__).parent / "cleaned_india_housing_prices.zip"
-if not zip_path.exists():
-    st.error(f"Missing dataset zip: {zip_path}. Please add cleaned_india_housing_prices.zip into the src folder.")
-    st.stop()
+zip_path = Path(__file__).parent.parent / "cleaned_india_housing_prices.zip"  
+csv_name = "cleaned_india_housing_prices.csv"
 
-with zipfile.ZipFile(zip_path) as z:
-    # verify file exists inside zip
-    if "cleaned_india_housing_prices.csv" not in z.namelist():
-        st.error("cleaned_india_housing_prices.csv not found inside the zip file.")
-        st.stop()
-    df = pd.read_csv(z.open("cleaned_india_housing_prices.csv"))
+if zip_path.exists():
+    with zipfile.ZipFile(zip_path) as z:
+        df = pd.read_csv(z.open(csv_name))
+else:
+    # fallback to direct CSV if zip not present
+    csv_path = Path(__file__).parent.parent / "cleaned_india_housing_prices.csv"
+    df = pd.read_csv(csv_path))
 
 st.set_page_config(page_title="Real Estate Investment Advisor (No-ML)", layout='wide')
 col_logo, col_title = st.columns([1, 14])
@@ -225,3 +224,4 @@ st.markdown("""
 """)
 
 # End of app
+
