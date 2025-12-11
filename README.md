@@ -6,6 +6,11 @@ It also provides a **rule-based investment decision system** and a **5-year pric
 
 ---
 
+## 🚀 Live Dashboard  
+🔗 **Streamlit App:** [https://your-streamlit-link.streamlit.app/](https://real-estate-investment-advisor-webapp.streamlit.app/)
+
+---
+
 ## 🧹 1. Data Preprocessing
 
 Performed in `preprocessing.ipynb` and applied in the Streamlit app.
